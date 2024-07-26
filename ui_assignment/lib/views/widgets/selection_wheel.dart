@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:ui_assignment/controller/setting_controller.dart';
 
 class SelectionWheel extends StatefulWidget {
   final List<String> items;
   final String headingLabel;
+  final SettingController controller;
 
-  const SelectionWheel(
-      {super.key, required this.items, required this.headingLabel});
+  const SelectionWheel({
+    super.key,
+    required this.items,
+    required this.headingLabel,
+    required this.controller,
+  });
 
   @override
   State<SelectionWheel> createState() => _SelectionWheelState();
@@ -27,7 +33,8 @@ class _SelectionWheelState extends State<SelectionWheel> {
         setState(() {
           _currentIndex = index;
         });
-        print('Current Index: $_currentIndex');
+        // Update the controller value when the item is centered
+        _updateControllerValue();
       }
     });
   }
@@ -36,6 +43,17 @@ class _SelectionWheelState extends State<SelectionWheel> {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void _updateControllerValue() {
+    String selectedItem = widget.items[_currentIndex];
+    if (widget.headingLabel == 'tune') {
+      widget.controller.updateRingtone(selectedItem);
+    } else if (widget.headingLabel == 'strength') {
+      widget.controller.updateVibrationStrength(selectedItem);
+    } else if (widget.headingLabel == 'snooz') {
+      widget.controller.updateSnoozeDuration(selectedItem);
+    }
   }
 
   @override
@@ -58,7 +76,7 @@ class _SelectionWheelState extends State<SelectionWheel> {
               ),
             ),
             Text(
-              'select ${widget.headingLabel}',
+              'Select ${widget.headingLabel}',
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Padding(
@@ -69,46 +87,37 @@ class _SelectionWheelState extends State<SelectionWheel> {
                 height: 160,
                 child: Stack(
                   children: [
-                    NotificationListener<ScrollEndNotification>(
-                      onNotification: (notification) {
-                        _scrollController.animateToItem(
-                          _currentIndex,
-                          duration: const Duration(milliseconds: 200),
-                          curve: Curves.easeInOut,
-                        );
-                        return true;
-                      },
-                      child: ListWheelScrollView.useDelegate(
-                        clipBehavior: Clip.antiAlias,
-                        controller: _scrollController,
-                        useMagnifier: true,
-                        magnification: 1.1,
-                        itemExtent: 60,
-                        overAndUnderCenterOpacity: 0.3,
-                        physics: const FixedExtentScrollPhysics(),
-                        childDelegate: ListWheelChildBuilderDelegate(
-                          builder: (context, index) {
-                            return Container(
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              padding: const EdgeInsets.all(8),
-                              alignment: Alignment.center,
-                              child: Text(
-                                widget.items[index],
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                ),
+                    ListWheelScrollView.useDelegate(
+                      clipBehavior: Clip.antiAlias,
+                      controller: _scrollController,
+                      useMagnifier: true,
+                      magnification: 1.1,
+                      itemExtent: 60,
+                      overAndUnderCenterOpacity: 0.3,
+                      physics: const FixedExtentScrollPhysics(),
+                      childDelegate: ListWheelChildBuilderDelegate(
+                        builder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.all(8),
+                            alignment: Alignment.center,
+                            child: Text(
+                              widget.items[index],
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
                               ),
-                            );
-                          },
-                          childCount: widget.items.length,
-                        ),
-                        onSelectedItemChanged: (index) {
-                          setState(() {
-                            _currentIndex = index;
-                          });
+                            ),
+                          );
                         },
+                        childCount: widget.items.length,
                       ),
+                      onSelectedItemChanged: (index) {
+                        setState(() {
+                          _currentIndex = index;
+                        });
+                        _updateControllerValue();
+                      },
                     ),
                     Positioned(
                       top: 55,

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ui_assignment/util/transition.dart';
 import 'package:ui_assignment/views/widgets/selection_wheel.dart';
+
+import '../../controller/setting_controller.dart';
 
 class AlarmDropdown extends StatelessWidget {
   final List<String> items;
@@ -14,11 +18,12 @@ class AlarmDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SettingController settingController = Get.find();
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(_fadePageRoute(
-          builder: (context) =>
-              SelectionWheel(items: items, headingLabel: label),
+        Navigator.of(context).push(RouteUtils.fadePageRoute(
+          builder: (context) => SelectionWheel(
+              items: items, headingLabel: label, controller: settingController),
         ));
       },
       child: Container(
@@ -34,25 +39,6 @@ class AlarmDropdown extends StatelessWidget {
               children: [Text(selectedItem), const Icon(Icons.expand_more)],
             ),
           )),
-    );
-  }
-
-  PageRouteBuilder _fadePageRoute({required WidgetBuilder builder}) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => builder(context),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 0.0);
-        const end = Offset.zero;
-        const curve = Curves.easeInOut;
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-        var offsetAnimation = animation.drive(tween);
-
-        return FadeTransition(
-          opacity: animation,
-          child: SlideTransition(position: offsetAnimation, child: child),
-        );
-      },
     );
   }
 }

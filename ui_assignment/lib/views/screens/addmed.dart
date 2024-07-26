@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:ui_assignment/views/widgets/fequency.dart';
 
 class AddMedScreen extends StatefulWidget {
@@ -42,35 +43,28 @@ class _AddMedScreenState extends State<AddMedScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        width: 200,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(30),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 10,
-              offset: Offset(0, 4),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 20.0),
+        child: SizedBox(
+          width: 200,
+          child: FloatingActionButton.extended(
+            onPressed: () {},
+            backgroundColor: Colors.white,
+            elevation: 4,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
             ),
-          ],
-        ),
-        margin: const EdgeInsets.only(bottom: 30.0),
-        child: FloatingActionButton.extended(
-          onPressed: () {},
-          backgroundColor: Colors.transparent,
-          elevation: 0, // Remove the default shadow
-          label: const Row(
-            children: [
-              Icon(Icons.add,
-                  color:
-                      Colors.black), // Change icon color to black for contrast
-              SizedBox(width: 8),
-              Text('Add Item',
-                  style: TextStyle(
-                      color: Colors
-                          .black)), // Change text color to black for contrast
-            ],
+            label: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Iconsax.add5),
+                SizedBox(width: 8),
+                Text(
+                  'Add Item',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -122,6 +116,9 @@ class _AddMedScreenState extends State<AddMedScreen> {
                   });
                 },
               ),
+              const Row(
+                children: [],
+              )
             ],
           ),
         ),

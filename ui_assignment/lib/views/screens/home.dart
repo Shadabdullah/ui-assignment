@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             onPressed: () {
               Navigator.of(context).push(RouteUtils.fadePageRoute(
-                builder: (context) => SettingScreen(),
+                builder: (context) => const SettingScreen(),
               ));
             },
             icon: const Icon(Iconsax.setting),

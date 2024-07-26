@@ -7,10 +7,10 @@ class FrequencySelectionWidget extends StatelessWidget {
   final ValueChanged<FrequencyOption?> onChanged;
 
   const FrequencySelectionWidget({
-    Key? key,
+    super.key,
     required this.selectedFrequency,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

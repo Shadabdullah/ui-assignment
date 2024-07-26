@@ -8,9 +8,10 @@ import '../widgets/preference_toggle.dart';
 import '../widgets/settings_label.dart';
 
 class SettingScreen extends StatelessWidget {
+  const SettingScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    // Get the SettingController instance
     final SettingController settingController = Get.find();
 
     return Scaffold(
@@ -111,7 +112,7 @@ class SettingScreen extends StatelessWidget {
                     Obx(() => AlarmDropdown(
                           items: settingController.snoozeDurations,
                           selectedItem: settingController.snoozeDuration.value,
-                          label: "snooze",
+                          label: "snooz",
                         )),
                   ],
                 ),

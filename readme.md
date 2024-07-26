@@ -15,7 +15,7 @@ This project is a simple Flutter application showcasing a minimalistic UI design
 
 Below are the screenshots of the application's UI:
 
-  <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/one.jpg" alt="Home Screen" height="600" width="600"/>
+  <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/one.jpg" alt="Home Screen" width="600"/>
 
 
   <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/two.jpg" alt="Details Screen" width="600"/>  

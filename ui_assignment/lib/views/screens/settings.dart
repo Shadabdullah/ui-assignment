@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ui_assignment/views/widgets/alarm_dropdown.dart';
 import 'package:ui_assignment/views/widgets/date_range.dart';
 import 'package:ui_assignment/views/widgets/preference_toggle.dart';
+import 'package:ui_assignment/views/widgets/settings_label.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -20,12 +21,15 @@ class _SettingScreenState extends State<SettingScreen> {
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
-            // Add your onPressed action here
+            Navigator.pop(context);
           },
           icon: const Icon(Icons.arrow_back_ios_rounded),
         ),
         centerTitle: true,
-        title: const Text('Device setting'),
+        title: const Text(
+          'Device setting',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -46,18 +50,12 @@ class _SettingScreenState extends State<SettingScreen> {
                       value: false,
                       onChanged: (value) {},
                     ),
-                    const Align(
-                      alignment: Alignment.topLeft,
-                      child: Text('Start date & time'),
-                    ),
+                    SettingsLabel(value: "Start date & time "),
                     DateRange(
                       controller: _startDateController,
                       labelText: 'DD MM / YYYY',
                     ),
-                    const Align(
-                      alignment: Alignment.topLeft,
-                      child: Text('End date & time'),
-                    ),
+                    SettingsLabel(value: "End date & time "),
                     DateRange(
                       controller: _endDateController,
                       labelText: 'DD MM / YYYY',
@@ -67,19 +65,19 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               PreferenceToggle(
                 border: true,
-                label: 'Set Vacation Time',
+                label: 'Show meds name',
                 value: false,
                 onChanged: (value) {},
               ),
               PreferenceToggle(
                 border: true,
-                label: 'Set Vacation Time',
+                label: 'Notify pharma to autofil',
                 value: false,
                 onChanged: (value) {},
               ),
               PreferenceToggle(
                 border: true,
-                label: 'Set Vacation Time',
+                label: 'Add sorry Time',
                 value: false,
                 onChanged: (value) {},
               ),
@@ -91,16 +89,19 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
                 child: Column(
                   children: [
+                    SettingsLabel(value: 'Alarm tune'),
                     AlarmDropdown(
                       items: const ['Chimes', 'Rooster', 'Sweet Piano'],
                       selectedItem: 'Rooster',
                       onChanged: (value) {},
                     ),
+                    SettingsLabel(value: 'Alarm Strength'),
                     AlarmDropdown(
                       items: const ['Low', 'Medium', 'Louder'],
                       selectedItem: 'Low',
                       onChanged: (value) {},
                     ),
+                    SettingsLabel(value: 'Alarm Snooz'),
                     AlarmDropdown(
                       items: const ['5 Min', '10 Min', '15 Min'],
                       selectedItem: '5 Min',

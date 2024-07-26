@@ -17,7 +17,8 @@ class PreferenceToggle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(4),
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         border: border ? Border.all(width: .01) : null,
         borderRadius: BorderRadius.circular(8),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ui_assignment/views/screens/addmed.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'views/screens/home.dart';
 
 void main() {
   runApp(const UiApp());
@@ -12,7 +14,10 @@ class UiApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.light(),
-        home: MyApp());
+        theme: ThemeData(
+          brightness: Brightness.light,
+          fontFamily: GoogleFonts.lato().fontFamily,
+        ),
+        home: const HomeScreen());
   }
 }

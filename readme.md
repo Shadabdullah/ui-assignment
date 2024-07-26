@@ -44,7 +44,7 @@ To get started with this project, follow these steps:
 2. **Navigate to the Project Directory:**
 
    ```sh
-   cd ui-project
+   cd ui-assignment
    ```
 
 3. **Install Dependencies:**

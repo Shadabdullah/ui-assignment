@@ -31,6 +31,7 @@ class PreferenceToggle extends StatelessWidget {
             style: const TextStyle(fontSize: 16.0),
           ),
           Switch(
+            inactiveThumbColor: Colors.white,
             value: value,
             onChanged: onChanged,
           ),

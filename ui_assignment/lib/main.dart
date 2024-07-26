@@ -19,6 +19,13 @@ class UiApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.light,
+          primaryColor: Colors.cyan,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.cyan,
+            primary: Colors.cyan,
+            secondary: Colors.cyan,
+            onSurface: Colors.black,
+          ),
           fontFamily: GoogleFonts.lato().fontFamily,
         ),
         home: const HomeScreen());

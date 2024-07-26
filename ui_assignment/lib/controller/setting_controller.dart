@@ -1,18 +1,14 @@
 import 'package:get/get.dart';
 
 class SettingController extends GetxController {
-  // Boolean values
   var isVacationTimeEnabled = true.obs;
   var shouldShowMedicationName = false.obs;
   var shouldNotifyPharmacist = false.obs;
   var shouldAddToStory = false.obs;
 
-  // Strings
   var ringtone = ''.obs;
   var vibrationStrength = ''.obs;
   var snoozeDuration = ''.obs;
-
-  // Lists for alarms
   final List<String> ringtones = ['Rooster', 'Sweet', 'Chime', 'Ding', 'Buzz'];
 
   final List<String> vibrationStrengths = ['Low', 'Medium', 'High'];
@@ -27,7 +23,6 @@ class SettingController extends GetxController {
   void onInit() {
     super.onInit();
 
-    // Set initial values to the first item in the lists
     ringtone.value = ringtones.isNotEmpty ? ringtones[0] : '';
     vibrationStrength.value =
         vibrationStrengths.isNotEmpty ? vibrationStrengths[0] : '';

@@ -24,19 +24,19 @@ class FrequencySelectionWidget extends StatelessWidget {
           onChanged: onChanged,
         ),
         RadioListTile<FrequencyOption>(
-          title: const Text('Weekly'),
+          title: const Text('Specific Days'),
           value: FrequencyOption.weekly,
           groupValue: selectedFrequency,
           onChanged: onChanged,
         ),
         RadioListTile<FrequencyOption>(
-          title: const Text('Monthly'),
+          title: const Text('Interval'),
           value: FrequencyOption.monthly,
           groupValue: selectedFrequency,
           onChanged: onChanged,
         ),
         RadioListTile<FrequencyOption>(
-          title: const Text('Yearly'),
+          title: const Text('As needed'),
           value: FrequencyOption.yearly,
           groupValue: selectedFrequency,
           onChanged: onChanged,

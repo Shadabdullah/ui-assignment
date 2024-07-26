@@ -87,6 +87,33 @@ class SettingScreen extends StatelessWidget {
                       settingController.toggleAddToStory(value);
                     },
                   )),
+              const SizedBox(
+                height: 5,
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(width: .1),
+                ),
+                child: const Column(
+                  children: [
+                    Align(
+                        alignment: Alignment.topLeft,
+                        child: Text("Occupied Cabinets")),
+                    Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          "1 ,2 ,3 ,4",
+                          style: TextStyle(color: Colors.grey),
+                        ))
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -95,6 +122,17 @@ class SettingScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Alarm setting",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
                     SettingsLabel(value: 'Alarm tune'),
                     Obx(() => AlarmDropdown(
                           items: settingController.ringtones,

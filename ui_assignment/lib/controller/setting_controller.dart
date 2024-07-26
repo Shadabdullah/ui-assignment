@@ -1,0 +1,49 @@
+import 'package:get/get.dart';
+
+class SettingController extends GetxController {
+  // Boolean values
+  var isVacationTimeEnabled = true.obs;
+  var shouldShowMedicationName = false.obs;
+  var shouldNotifyPharmacist = false.obs;
+  var shouldAddToStory = false.obs;
+
+  // Strings
+  var ringtone = ''.obs;
+  var vibrationStrength = ''.obs;
+  var snoozeDuration = ''.obs;
+
+  // Lists for alarms
+  final List<String> ringtones = ['Rooster', 'Sweet', 'Chime', 'Ding', 'Buzz'];
+
+  final List<String> vibrationStrengths = ['Low', 'Medium', 'High'];
+
+  final List<String> snoozeDurations = [
+    '5Min',
+    '10Min',
+    '15Min',
+  ];
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    // Set initial values to the first item in the lists
+    ringtone.value = ringtones.isNotEmpty ? ringtones[0] : '';
+    vibrationStrength.value =
+        vibrationStrengths.isNotEmpty ? vibrationStrengths[0] : '';
+    snoozeDuration.value = snoozeDurations.isNotEmpty ? snoozeDurations[0] : '';
+  }
+
+  // Methods to update the boolean values
+  void toggleVacationTime(bool value) => isVacationTimeEnabled.value = value;
+  void toggleShowMedicationName(bool value) =>
+      shouldShowMedicationName.value = value;
+  void toggleNotifyPharmacist(bool value) =>
+      shouldNotifyPharmacist.value = value;
+  void toggleAddToStory(bool value) => shouldAddToStory.value = value;
+
+  // Methods to update the strings
+  void updateRingtone(String value) => ringtone.value = value;
+  void updateVibrationStrength(String value) => vibrationStrength.value = value;
+  void updateSnoozeDuration(String value) => snoozeDuration.value = value;
+}

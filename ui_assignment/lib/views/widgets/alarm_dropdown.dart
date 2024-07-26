@@ -4,36 +4,37 @@ import 'package:ui_assignment/views/widgets/selection_wheel.dart';
 class AlarmDropdown extends StatelessWidget {
   final List<String> items;
   final String selectedItem;
+  final String label;
 
-  const AlarmDropdown({
-    super.key,
-    required this.items,
-    required this.selectedItem,
-  });
+  const AlarmDropdown(
+      {super.key,
+      required this.items,
+      required this.selectedItem,
+      required this.label});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        decoration: BoxDecoration(
-          border: Border.all(width: 0.1),
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(_fadePageRoute(
-                builder: (context) =>
-                    SelectionWheel(items: items, headingLabel: selectedItem),
-              ));
-            },
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(_fadePageRoute(
+          builder: (context) =>
+              SelectionWheel(items: items, headingLabel: label),
+        ));
+      },
+      child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+            border: Border.all(width: 0.1),
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text(selectedItem), Icon(Icons.expand_more)],
+              children: [Text(selectedItem), const Icon(Icons.expand_more)],
             ),
-          ),
-        ));
+          )),
+    );
   }
 
   PageRouteBuilder _fadePageRoute({required WidgetBuilder builder}) {

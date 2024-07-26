@@ -41,6 +41,7 @@ dependencies:
   flutter_holo_date_picker: ^1.1.3
   google_fonts: ^6.2.1
   font_preview: ^0.1.4
+  get: ^4.6.6
 
 dev_dependencies:
   flutter_test:

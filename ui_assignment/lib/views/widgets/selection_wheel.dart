@@ -4,7 +4,8 @@ class SelectionWheel extends StatefulWidget {
   final List<String> items;
   final String headingLabel;
 
-  SelectionWheel({super.key, required this.items, required this.headingLabel});
+  const SelectionWheel(
+      {super.key, required this.items, required this.headingLabel});
 
   @override
   State<SelectionWheel> createState() => _SelectionWheelState();
@@ -45,22 +46,20 @@ class _SelectionWheelState extends State<SelectionWheel> {
         child: Column(
           children: [
             SafeArea(
-              child: Container(
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: const Icon(Icons.arrow_back_ios_new),
-                    ),
-                  ],
-                ),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: const Icon(Icons.arrow_back_ios_new),
+                  ),
+                ],
               ),
             ),
             Text(
-              widget.headingLabel,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              'select ${widget.headingLabel}',
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Padding(
               padding:

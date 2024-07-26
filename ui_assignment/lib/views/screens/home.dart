@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ui_assignment/util/transition.dart';
 import 'package:ui_assignment/views/screens/addmed.dart';
 
 import 'settings.dart';
@@ -19,8 +20,8 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(_fadePageRoute(
-                builder: (context) => const SettingScreen(),
+              Navigator.of(context).push(RouteUtils.fadePageRoute(
+                builder: (context) => SettingScreen(),
               ));
             },
             icon: const Icon(Iconsax.setting),
@@ -30,7 +31,7 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: TextButton.icon(
           onPressed: () {
-            Navigator.of(context).push(_fadePageRoute(
+            Navigator.of(context).push(RouteUtils.fadePageRoute(
               builder: (context) => const AddMedScreen(),
             ));
           },
@@ -41,25 +42,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  PageRouteBuilder _fadePageRoute({required WidgetBuilder builder}) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => builder(context),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(0.0, 0.0);
-        const end = Offset.zero;
-        const curve = Curves.easeInOut;
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-        var offsetAnimation = animation.drive(tween);
-
-        return FadeTransition(
-          opacity: animation,
-          child: SlideTransition(position: offsetAnimation, child: child),
-        );
-      },
     );
   }
 }

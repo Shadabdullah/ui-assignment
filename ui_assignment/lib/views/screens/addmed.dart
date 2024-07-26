@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 50),
         child: Column(
           children: [
             SafeArea(
@@ -87,62 +87,89 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   children: [
                     IconButton(
-                        onPressed: () {}, icon: Icon(Icons.arrow_back_ios_new))
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icon(Icons.arrow_back_ios_new))
                   ],
                 ),
               ),
             ),
-            Text("Select Strength"),
-            SizedBox(
-              width: 100,
-              height: 300,
-              child: Stack(
-                children: [
-                  ListWheelScrollView.useDelegate(
-                    controller: _scrollController,
-                    useMagnifier: true,
-                    magnification: 1,
-                    itemExtent: 60,
-                    overAndUnderCenterOpacity: 0.3,
-                    childDelegate: ListWheelChildBuilderDelegate(
-                      builder: (context, index) {
-                        final items = ['Slow', 'Medium', 'Fast'];
-
-                        return Container(
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          padding: const EdgeInsets.all(8),
-                          alignment: Alignment.center,
-                          child: Text(
-                            items[index],
-                            style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
-                            ),
-                          ),
+            Text(
+              'Select Strenght',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 40),
+              child: SizedBox(
+                width: 100,
+                height: 160,
+                child: Stack(
+                  children: [
+                    NotificationListener<ScrollEndNotification>(
+                      onNotification: (notification) {
+                        _scrollController.animateToItem(
+                          _currentIndex,
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.easeInOut,
                         );
+                        return true;
                       },
-                      childCount: 3,
+                      child: ListWheelScrollView.useDelegate(
+                        clipBehavior: Clip.antiAlias,
+                        controller: _scrollController,
+                        useMagnifier: true,
+                        magnification: 1.1,
+                        itemExtent: 60,
+                        overAndUnderCenterOpacity: 0.3,
+                        physics: FixedExtentScrollPhysics(),
+                        childDelegate: ListWheelChildBuilderDelegate(
+                          builder: (context, index) {
+                            final items = ["Low", "Medium", "Louder"];
+
+                            return Container(
+                              margin: const EdgeInsets.symmetric(vertical: 10),
+                              padding: const EdgeInsets.all(8),
+                              alignment: Alignment.center,
+                              child: Text(
+                                items[index],
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            );
+                          },
+                          childCount: 3,
+                        ),
+                        onSelectedItemChanged: (index) {
+                          setState(() {
+                            _currentIndex = index;
+                          });
+                        },
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    top: 130,
-                    left: 0,
-                    right: 0,
-                    child: Container(
-                      height: 2,
-                      color: Colors.grey[300],
+                    Positioned(
+                      top: 55,
+                      left: 0,
+                      right: 0,
+                      child: Container(
+                        height: 2,
+                        color: Colors.grey[300],
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: 130,
-                    left: 0,
-                    right: 0,
-                    child: Container(
-                      height: 2,
-                      color: Colors.grey[300],
+                    Positioned(
+                      bottom: 55,
+                      left: 0,
+                      right: 0,
+                      child: Container(
+                        height: 2,
+                        color: Colors.grey[300],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

@@ -14,11 +14,21 @@ This project is a simple Flutter application showcasing a minimalistic UI design
 ## Screenshots
 
 Below are the screenshots of the application's UI:
-- **Home Screen:**  
+
+  <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/one.jpg" alt="Home Screen" width="600"/>
+
+
+  <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/two.jpg" alt="Details Screen" width="600"/>  
+  <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/three.jpg" alt="Home Screen" width="600"/>
+
+  <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/four.jpg" alt="Details Screen" width="600"/> 
   <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/five.jpg" alt="Home Screen" width="600"/>
 
-- **Details Screen:**  
-  <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/five.jpg" alt="Details Screen" width="600"/>  <!-- Replace with the actual path to your details screen image if different -->
+
+  <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/six.jpg" alt="Details Screen" width="600"/>
+
+  <img src="https://github.com/Shadabdullah/ui-assignment/blob/main/pics/seven.jpg" alt="Home Screen" width="600"/>
+
 
 
 ## Installation

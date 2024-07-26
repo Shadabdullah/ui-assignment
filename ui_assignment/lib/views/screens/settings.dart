@@ -90,22 +90,19 @@ class _SettingScreenState extends State<SettingScreen> {
                 child: Column(
                   children: [
                     SettingsLabel(value: 'Alarm tune'),
-                    AlarmDropdown(
-                      items: const ['Chimes', 'Rooster', 'Sweet Piano'],
+                    const AlarmDropdown(
+                      items: ['Chimes', 'Rooster', 'Sweet'],
                       selectedItem: 'Rooster',
-                      onChanged: (value) {},
                     ),
                     SettingsLabel(value: 'Alarm Strength'),
-                    AlarmDropdown(
-                      items: const ['Low', 'Medium', 'Louder'],
+                    const AlarmDropdown(
+                      items: ['Low', 'Medium', 'Louder'],
                       selectedItem: 'Low',
-                      onChanged: (value) {},
                     ),
                     SettingsLabel(value: 'Alarm Snooz'),
-                    AlarmDropdown(
-                      items: const ['5 Min', '10 Min', '15 Min'],
-                      selectedItem: '5 Min',
-                      onChanged: (value) {},
+                    const AlarmDropdown(
+                      items: ['5Min', '10Min', '15Min'],
+                      selectedItem: '5Min',
                     ),
                   ],
                 ),

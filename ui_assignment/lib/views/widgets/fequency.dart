@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum FrequencyOption { daily, weekly, monthly, yearly }
+enum FrequencyOption { daily, spacificDays, interval, asneeded }
 
 class FrequencySelectionWidget extends StatelessWidget {
   final FrequencyOption selectedFrequency;
@@ -25,19 +25,19 @@ class FrequencySelectionWidget extends StatelessWidget {
         ),
         RadioListTile<FrequencyOption>(
           title: const Text('Specific Days'),
-          value: FrequencyOption.weekly,
+          value: FrequencyOption.spacificDays,
           groupValue: selectedFrequency,
           onChanged: onChanged,
         ),
         RadioListTile<FrequencyOption>(
           title: const Text('Interval'),
-          value: FrequencyOption.monthly,
+          value: FrequencyOption.interval,
           groupValue: selectedFrequency,
           onChanged: onChanged,
         ),
         RadioListTile<FrequencyOption>(
           title: const Text('As needed'),
-          value: FrequencyOption.yearly,
+          value: FrequencyOption.asneeded,
           groupValue: selectedFrequency,
           onChanged: onChanged,
         ),
